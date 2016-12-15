@@ -28,8 +28,8 @@ public class FirstReverseTest {
     }
 
     @Parameters
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new java.lang.Object[][]{{"George", "egroeG"}, {"ABCDEF", "FEDCBA"}, {"12345", "54321"}});
+    public static Collection<String[]> data() {
+        return Arrays.asList(new String[][]{{"George", "egroeG"}, {"ABCDEF", "FEDCBA"}, {"12345", "54321"}});
     }
 
     @Test

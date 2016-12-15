@@ -1,20 +1,52 @@
 package StringManipulation;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import static StringManipulation.LetterChanges.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * 1. For the input "replace!*" your output was incorrect. The correct answer is sfqmbdf!*.
- 2. For the input "coderbyte" your output was incorrect. The correct answer is dpEfsczUf.
- 3. For the input "beautiful^" your output was incorrect. The correct answer is cfbvUjgvm^.
- 4. For the input "oxford" your output was incorrect. The correct answer is pygpsE.
- 5. For the input "123456789ae" your output was incorrect. The correct answer is 123456789bf.
- 6. For the input "this long cake@&" your output was incorrect. The correct answer is UIjt mpOh dblf@&.
- 7. For the input "a confusing /:sentence:/[ this is not!!!!!!!~" your output was incorrect. The correct answer is b dpOgvtjOh /:tfOUfOdf:/[ UIjt jt OpU!!!!!!!~.
  * Created by fouli on 12/14/2016.
  */
+@RunWith(Parameterized.class)
 public class LetterChangesTest {
-private String expected;
-private String actual;
+    private String expected;
+    private String actual;
 
-    
+
+    public LetterChangesTest(String actual, String expected) {
+        this.actual = actual;
+        this.expected = expected;
+    }
+
+
+    @Parameterized.Parameters
+    public static Collection<String[]> data() {
+        return Arrays.asList(new String[][]{
+                {"replace!*", "sfqmbdf!*"},
+                {"coderbyte", "dpEfsczUf"},
+                {"beautiful^", "cfbvUjgvm^"},
+                {"oxford", "pygpsE"},
+                {"123456789ae", "123456789bf"},
+                {"this long cake@&", "UIjt mpOh dblf@&"},
+                {"a confusing /:sentence:/[ this is not!!!!!!!~", "b dpOgvtjOh /:tfOUfOdf:/[ UIjt jt OpU!!!!!!!~"}
+        });
+    }
+
+    @Test
+    public void test() {
+        actual = LetterChangesFirstWithDictionary(actual);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test2(){
+        actual = LetterChanges(actual);
+        assertEquals(expected, actual);
+    }
 }
