@@ -1,9 +1,6 @@
 package StringManipulation;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Using the Java language, have the function LongestWord(sen) take the sen parameter being passed and return the largest word in the string. If there are two or more words that are the same length, return the first word from the string with that length.
@@ -12,21 +9,16 @@ import java.util.TreeMap;
  */
 public class LongestWord {
 
-    public static String LongestWord(String sen){
+    public static String LongestWord(String sen) {
+
+        String longestWord = "";
         String[] value = sen.split(" ");
-
-        HashMap<Integer, String> dictionary = new HashMap<>();
-        for(int i=0; i<value.length;i++){
-            dictionary.put(value[i].length(),value[1]);
+        for (String word : value) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
+            }
         }
-        //Sort the key from biggest to smallest
-        Map<Integer,String> treeMap = new TreeMap<>(dictionary);
-
-       return treeMap.entrySet().iterator().next().getValue();
+        return longestWord;
     }
 
-    public static void main(String[] args) {
-
-
-    }
 }
